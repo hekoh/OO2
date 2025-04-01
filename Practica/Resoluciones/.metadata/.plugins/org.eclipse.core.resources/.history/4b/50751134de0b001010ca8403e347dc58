@@ -1,0 +1,11 @@
+package Clases;
+
+public class Piedra extends Jugada {
+	
+	@Override
+	public String JugarContraPiedra(Piedra piedra) {
+		return("empate");
+	}
+
+	
+}

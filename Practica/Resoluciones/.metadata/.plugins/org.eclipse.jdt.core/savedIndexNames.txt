@@ -1,0 +1,5 @@
+INDEX VERSION 1.132+C:\Users\lucag\Documents\LUCA\2025\OO2\Practica\Resoluciones\.metadata\.plugins\org.eclipse.jdt.core
+1973972235.index
+3697799549.index
+1620673288.index
+1865797976.index

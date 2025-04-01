@@ -1,0 +1,12 @@
+package Clases;
+
+public abstract class Jugada {
+	
+	public void Jugar(Jugada jugada1, Jugada jugada2) {
+		
+	}
+	
+	public abstract String JugarContra(Piedra piedra);
+	public abstract String JugarContra(Papel papel);
+	public abstract String JugarContra(Tijera tijera);
+}

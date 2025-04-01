@@ -1,0 +1,26 @@
+package Clases;
+
+public class Piedra extends Jugada {
+	
+	
+	public String JugarContra(Jugada jugada1) {
+		return jugada1.JugarContraPiedra();
+	}
+	
+	@Override
+	public String JugarContraPiedra(Piedra piedra) {
+		return("empate");
+	}
+	@Override 
+	public String JugarContraPapel(Papel papel) {
+		return ("pierde");
+	}
+	@Override
+	public String JugarContraTijera(Tijera tijera) {
+		return("gana");
+	}
+
+
+
+	
+}
