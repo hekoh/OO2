@@ -1,7 +1,7 @@
-#Ejercicio 2.2 Juego
+# Ejercicio 2.2 Juego
 
 
-'''java
+``` java
 public class Juego {
 // ......
 
@@ -19,12 +19,12 @@ public class Jugador {
 	public String apellido;
 	public int puntuacion = 0;
 }
-'''
+```
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-###Primer olor: La clase Juego Utiliza datos de la clase jugador, rompe el encapsulamiento.
-	##Solucion: Se aplica "Move Method" y se mueven los metodos a la clase Jugador.
+### Primer olor: La clase Juego Utiliza datos de la clase `jugador`, rompe el encapsulamiento.
+	Solucion: Se aplica "Move Method" y se mueven los metodos a la clase `Jugador`.
 
-'''java
+```java
 public class Juego {
 // ......
 }
@@ -42,12 +42,12 @@ public class Jugador {
 		j.puntuacion = j.puntuacion - 50;
 	}
 }
-'''
+```
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-###Segundo olor: La clase 'juego' no tiene funcionalidad ni proposito.
-	##Solucion: Inline Class. Se mueven las caracteristicas (si quedo alguna) de la clase Juego a la clase Jugador y se elimina la primera
+### Segundo olor: La clase `juego` no tiene funcionalidad ni proposito.
+	Solucion: Inline Class. Se mueven las caracteristicas (si quedo alguna) de la clase `Juego` a la clase `Jugador` y se elimina la primera
 
- '''java	
+ ```java	
  public class Jugador {
 	public String nombre;
 	public String apellido;
@@ -61,11 +61,11 @@ public class Jugador {
 		j.puntuacion = j.puntuacion - 50;
 	}
 }
-'''
+```
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-###Tercer Olor: Las variables de instancia de la clase Jugador son publicas. Rompe el encapsulamiento
-	##Solucion: Encapsulate Field. Cambiar las variables publicas a privadas
-'''java
+### Tercer Olor: Las variables de instancia de la clase `Jugador` son publicas. Rompe el encapsulamiento
+	Solucion: Encapsulate Field. Cambiar las variables publicas a privadas
+```java
  public class Jugador {
 	private String nombre;
 	private String apellido;
@@ -79,5 +79,5 @@ public class Jugador {
 		j.puntuacion = j.puntuacion - 50;
 	}
 }
-'''
+```
 
