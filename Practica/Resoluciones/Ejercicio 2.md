@@ -182,7 +182,7 @@ private List<Post> ordenarPostPorFecha(List<Post> listaPost){
 
 # Ejercicio 2.4 Carrito de compras
 
-<a> <img src ="https://i.ibb.co/r2mYkQXT/Screenshot-1.png" alt = "uml"> </a>
+<a> <img src ="https://i.ibb.co/RkGrWGsC/Whats-App-Image-2025-04-08-at-11-28-17.jpg" alt = "uml"> </a>
 
 ```java 
 public class Producto {
@@ -294,4 +294,4 @@ public class Carrito {
 
 # Ejercicio 2.5 Envio de pedidos
 
-<a ><img src= "https://i.ibb.co/YT1xtQRs/Screenshot-2.png" alt ="uml"></a>
+<a ><img src= "https://i.ibb.co/4ZbtVMPj/Whats-App-Image-2025-04-08-at-11-28-17-1.jpg" alt ="uml"></a>
