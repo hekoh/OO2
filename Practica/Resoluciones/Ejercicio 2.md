@@ -47,6 +47,8 @@ public class Jugador {
 ### Segundo olor: La clase `juego` no tiene funcionalidad ni proposito.
 Solucion: Inline Class. Se mueven las caracteristicas (si quedo alguna) de la clase `Juego` a la clase `Jugador` y se elimina la primera
 
+consultar
+
  ```java	
  public class Jugador {
 	public String nombre;
@@ -295,3 +297,324 @@ public class Carrito {
 # Ejercicio 2.5 Envio de pedidos
 
 <a ><img src= "https://i.ibb.co/4ZbtVMPj/Whats-App-Image-2025-04-08-at-11-28-17-1.jpg" alt ="uml"></a>
+
+```java
+
+public class Supermercado {
+
+	public void notificarPedido(long nroPedido, Cliente cliente) {
+		String notificacion = MessageFormat.format(“Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}”, new Object[] { 
+			nroPedido, cliente.getDireccionFormateada() });
+		// lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+		System.out.println(notificacion);
+	}
+}
+
+public class Cliente {
+
+	public String getDireccionFormateada() {
+		return
+		this.direccion.getLocalidad() + “, ” +
+		this.direccion.getCalle() + “, ” +
+		this.direccion.getNumero() + “, ” +
+		this.direccion.getDepartamento()
+	}
+}
+``` 
+
+### Primer Olor: El metodo "getDireccionFormateada" usa datos de la clase `direccion`. Feature Envy
+Solucion: Move Method
+
+data class?? inline class? preguntar
+
+```java
+
+public class Supermercado {
+
+	public void notificarPedido(long nroPedido, Cliente cliente) {
+		String notificacion = MessageFormat.format(“Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}”, new Object[] { 
+			nroPedido, cliente.getDireccionFormateada() });
+		// lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+		System.out.println(notificacion);
+	}
+}
+
+public class Cliente {
+	private Direccion direccion;
+
+	public String getDireccionFormateada(){
+		return Direccion.getDireccionFormateada();
+	}
+
+}
+
+public class Direccion{
+	public String localidad;
+	public String calle;
+	public String numero;
+	public String departamento;
+
+	public String getDireccionFormateada() {
+		return
+		this.localidad() + “, ” +
+		this.calle() + “, ” +
+		this.numero() + “, ” +
+		this.departamento()
+	}
+}
+``` 
+### Segundo Olor: Las variables de la clase `Direccion` son publicas.
+Solucion: Encasulate Field
+```java
+
+public class Supermercado {
+
+	public void notificarPedido(long nroPedido, Cliente cliente) {
+		String notificacion = MessageFormat.format(“Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}”, new Object[] { 
+			nroPedido, cliente.getDireccionFormateada() });
+		// lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+		System.out.println(notificacion);
+	}
+}
+
+public class Cliente {
+	private Direccion direccion;
+
+	public String getDireccionFormateada(){
+		return Direccion.getDireccionFormateada();
+	}
+
+}
+
+public class Direccion{
+	private String localidad;
+	private String calle;
+	private String numero;
+	private String departamento;
+
+	public String getDireccionFormateada() {
+		return
+		this.direccion.getLocalidad() + “, ” +
+		this.direccion.getCalle() + “, ” +
+		this.direccion.getNumero() + “, ” +
+		this.direccion.getDepartamento()
+	}
+}
+``` 
+### Tercer Olor: El metodo `notificarPedido` usa una variable temporal solo para imprimirla mas adelante.
+Solucion: Inline Temp
+```java
+
+public class Supermercado {
+
+	public void notificarPedido(long nroPedido, Cliente cliente) {
+		// lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+		System.out.println( MessageFormat.format(“Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}”, new Object[] { 
+			nroPedido, cliente.getDireccionFormateada() }););
+	}
+}
+
+public class Cliente {
+	private Direccion direccion;
+
+	public String getDireccionFormateada(){
+		return Direccion.getDireccionFormateada();
+	}
+
+}
+
+public class Direccion{
+	private String localidad;
+	private String calle;
+	private String numero;
+	private String departamento;
+
+	public String getDireccionFormateada() {
+		return
+		this.direccion.getLocalidad() + “, ” +
+		this.direccion.getCalle() + “, ” +
+		this.direccion.getNumero() + “, ” +
+		this.direccion.getDepartamento()
+	}
+}
+``` 
+### Cuarto Olor: La clase Cliente actua como intermediario entre Supermercado y Direccion. Middle Man
+Solucion: Remove Middle man
+```java
+
+public class Supermercado {
+
+	public void notificarPedido(long nroPedido, Direccion direccion) {
+		// lo imprimimos en pantalla, podría ser un mail, SMS, etc..
+		System.out.println( MessageFormat.format(“Estimado cliente, se le informa que hemos recibido su pedido con número {0}, el cual será enviado a la dirección {1}”, new Object[] { 
+			nroPedido, cliente.getDireccionFormateada() }););
+	}
+}
+
+public class Direccion{
+	private String localidad;
+	private String calle;
+	private String numero;
+	private String departamento;
+
+	public String getDireccionFormateada() {
+		return(
+		this.direccion.getLocalidad() + “, ” +
+		this.direccion.getCalle() + “, ” +
+		this.direccion.getNumero() + “, ” +
+		this.direccion.getDepartamento())
+	}
+}
+```
+
+# Ejercicio 2.6 Peliculas
+<a><img src= "https://i.ibb.co/b5HLPvj6/Screenshot-2.jpg" alt="uml"></a>
+
+```java
+
+public class Usuario {
+	private String tipoSubscripcion;
+	// ...
+	public void setTipoSubscripcion(String unTipo) {
+		this.tipoSubscripcion = unTipo;
+	}
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		double costo = 0;
+		if (tipoSubscripcion=="Basico") {
+			costo = pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno();
+		}
+		else if (tipoSubscripcion== "Familia") {
+			costo = (pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno()) * 0.90;
+		}
+		else if (tipoSubscripcion=="Plus") {
+			costo = pelicula.getCosto();
+		}
+		else if (tipoSubscripcion=="Premium") {
+			costo = pelicula.getCosto() * 0.75;
+		}
+		return costo;
+	}
+}
+public class Pelicula {
+	private LocalDate fechaEstreno;
+	// ...
+	public double getCosto() {
+		return this.costo;
+	}
+	public double calcularCargoExtraPorEstreno(){
+		// Si la Película se estrenó 30 días antes de la fecha actual, retorna un cargo de 0$, caso contrario, retorna un cargo extra de 300$
+		return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 : 300;
+	}
+}
+```
+
+### Primer Olor: La clase `Usuario` usa muchos if-else. Switch Statement
+Solucion: Replace Conditional with Polymorphism
+
+```java
+
+public class Usuario {
+	private Subscripcion tipoSubscripcion;
+	// ...
+	public void setTipoSubscripcion(Subscripcion unTipo) {
+		this.tipoSubscripcion = unTipo;
+	}
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return this.tipoSubscripcion.calcularCostoPelicula(pelicula); //sacar este metodo?? consultar
+	}
+}
+public interface Subscripcion{ 
+	public double calcularCostoPelicula(Pelicula pelicula);
+}
+
+public class Basico implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno();
+	}
+}
+public class Familia implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return (pelicula.getCosto() + pelicula.calcularCargoExtraPorEstreno()) * 0.90;
+	}
+}
+public class Plus implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto()
+	}
+}
+public class Premium implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() * 0.75;
+	}
+}
+
+public class Pelicula {
+	private LocalDate fechaEstreno;
+	// ...
+	public double getCosto() {
+		return this.costo;
+	}
+	public double calcularCargoExtraPorEstreno(){
+		// Si la Película se estrenó 30 días antes de la fecha actual, retorna un cargo de 0$, caso contrario, retorna un cargo extra de 300$
+		return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 : 300;
+	}
+}
+
+```
+
+### Segundo Olor: Las clases `Familia` y `Basico` implementan funcionalidad que deberia realizar `Pelicula`. Feature Envy
+Solucion: Extract Method
+
+```java
+
+public class Usuario {
+	private Subscripcion tipoSubscripcion;
+	// ...
+	public void setTipoSubscripcion(Subscripcion unTipo) {
+		this.tipoSubscripcion = unTipo;
+	}
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return this.tipoSubscripcion.calcularCostoPelicula(pelicula); //sacar este metodo?? consultar
+	}
+}
+public interface Subscripcion{ 
+	public double calcularCostoPelicula(Pelicula pelicula);
+}
+
+public class Basico implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.costoConEstreno();
+	}
+}
+public class Familia implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.costoConEstreno() * 0.90;
+	}
+}
+public class Plus implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto()
+	}
+}
+public class Premium implements Subscripcion{
+	public double calcularCostoPelicula(Pelicula pelicula) {
+		return pelicula.getCosto() * 0.75;
+	}
+}
+
+public class Pelicula {
+	private LocalDate fechaEstreno;
+	// ...
+	public double getCosto() {
+		return this.costo;
+	}
+	private double calcularCargoExtraPorEstreno(){
+		// Si la Película se estrenó 30 días antes de la fecha actual, retorna un cargo de 0$, caso contrario, retorna un cargo extra de 300$
+		return (ChronoUnit.DAYS.between(this.fechaEstreno, LocalDate.now()) ) > 30 ? 0 : 300;
+	}
+	public double costoConEstreno(){
+		return this.getCosto() + this..calcularCargoExtraPorEstreno();
+	}
+}
+
+```
