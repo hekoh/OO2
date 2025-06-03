@@ -1,0 +1,36 @@
+package Clases;
+
+import java.util.List;
+
+public abstract class WeatherDecorator implements WeatherData{
+	private WeatherData data;
+	
+	
+	
+	public WeatherDecorator(WeatherData data) {
+		this.data = data;
+	}
+	
+	public double getTemperatura() {
+		return data.getTemperatura();
+	}
+
+
+	public double getPresion() {
+		return data.getPresion();
+	}
+
+
+	public double getRadiacionSolar() {
+		return data.getRadiacionSolar();
+	}
+
+
+	public List<Double> getTemperaturas() {
+		return data.getTemperaturas();
+	}
+	
+	public String displayData() {
+		return this.data.displayData();
+	}
+}

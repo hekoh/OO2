@@ -1,0 +1,64 @@
+package Clases;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+public class WeatherAdapter implements WeatherData{
+	private HomeWeatherStation data;
+	private boolean celcius;
+	
+	
+	public WeatherAdapter(HomeWeatherStation data) {
+		this.data = data;
+		celcius = false;
+	}
+	
+	public double getTemperatura() {
+		if(celcius)
+			return Math.round((data.getTemperatura()-32 )/1.8);
+		else
+			return data.getTemperatura();
+	}
+
+
+	public double getPresion() {
+		return data.getPresion();
+	}
+
+
+	public double getRadiacionSolar() {
+		return data.getRadiacionSolar();
+	}
+
+
+	public List<Double> getTemperaturas() {
+		if(celcius)
+			return (data.getTemperaturas().stream().map(T -> 
+				(double)Math.round((T -32) /1.8)).
+					collect(Collectors.toList())); 
+		else	
+			return data.getTemperaturas();
+	}
+	
+
+	public String displayData() {
+		//if(celcius)
+			return "Temperatura F: " + this.getTemperatura() +
+					" Presión atmosf: " + this.getPresion() +
+					" Radiación solar: " + this.getRadiacionSolar();
+		//else
+			//return this.data.displayData();
+
+	}
+	
+	public void toogleCelcius() {
+		this.celcius = !celcius;
+	}
+	
+	
+	
+	
+	
+	
+}
