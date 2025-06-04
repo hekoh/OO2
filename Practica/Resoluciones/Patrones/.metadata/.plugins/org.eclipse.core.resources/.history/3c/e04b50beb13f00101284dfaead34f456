@@ -1,0 +1,44 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+public class DatabaseAccessProxyTest {
+    private DatabaseAccess database;
+    private DatabaseAccessProxy proxy;
+
+    
+    @BeforeEach
+    public void setUp() throws Exception {
+    	this.database = new DatabaseRealAccess();
+    	this.proxy = new DatabaseAccessProxy(database,"contraseña");
+    }
+
+    
+    @Test
+    public void testLogIn() {
+    	assertThrows(RuntimeException.class, () -> proxy.iniciarSesion("prueba fallida"));
+    	proxy.iniciarSesion("contraseña");
+    	Exception aux = assertThrows(RuntimeException.class, () -> proxy.iniciarSesion("contraseña"));
+    	assertEquals(aux.getMessage(), "Sesíon ya iniciada");
+    }
+    
+    
+    @Test
+    public void testGetSearchResults() {
+        assertEquals(Arrays.asList("Spiderman", "Marvel"), this.proxy.getSearchResults("select * from comics where id=1"));
+        assertEquals(Collections.emptyList(), this.proxy.getSearchResults("select * from comics where id=10"));
+    }
+
+    @Test
+    public void testInsertNewRow() {
+        assertEquals(3, this.proxy.insertNewRow(Arrays.asList("Patoruzú", "La flor")));
+        assertEquals(Arrays.asList("Patoruzú", "La flor"), this.proxy.getSearchResults("select * from comics where id=3"));
+    }
+}

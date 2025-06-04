@@ -1,0 +1,9 @@
+package Clases;
+
+public abstract class Prenda {
+	
+	
+	public abstract double Liquidez();
+	
+	
+}

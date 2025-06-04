@@ -1,0 +1,21 @@
+package Clases;
+
+import java.time.LocalDate;
+
+public class Alquiler extends Prenda{
+	private LocalDate inicio;
+	private LocalDate fin;
+	private double costoMes;
+	
+	
+	public Alquiler(LocalDate inicio, LocalDate fin, double costo) {
+		this.inicio = inicio;
+		this.fin = fin;
+		this.costoMes = costo;
+	}
+	
+	public double valorPrendario() {
+		return Valor() * Liquidez();
+	}
+	
+}

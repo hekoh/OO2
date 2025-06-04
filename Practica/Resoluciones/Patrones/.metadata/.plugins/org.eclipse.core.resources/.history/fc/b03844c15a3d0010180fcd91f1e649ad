@@ -1,0 +1,40 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.time.LocalDate;
+
+
+public class TestCatalogo {
+	private Catalogo catalogo;
+	private Componente comp1;
+	private BuilderPC builder;
+	
+	
+	@BeforeEach
+	public void setup() {
+		this.catalogo = new Catalogo();
+		this.comp1 = new Componente("HDD 500 GB", "Disco Basico, HDD 500 GB", 600.0, 30.0);
+		this.catalogo.agregarComponente(comp1);
+		this.catalogo.agregarComponente(new Componente("SSD 500 GB", "Disco Intermedio, SSD 500 GB", 900.0, 35.0););
+		
+	}
+	
+	
+	@Test
+	public void testGetComponente() {
+		assertEquals(this.catalogo.getComponente("500 GB"),comp1); //devuelve el primero
+		assertEquals(this.catalogo.getComponente("Disco Basico"),comp1);
+	}
+	
+	@Test
+	public void testBuilderGamer() {
+		this.builder = new BuilderGamer();
+		this.builder.setGabinete();G
+	}
+	
+}

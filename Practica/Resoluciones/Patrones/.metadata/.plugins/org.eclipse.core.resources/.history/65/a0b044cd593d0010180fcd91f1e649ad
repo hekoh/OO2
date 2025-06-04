@@ -1,0 +1,33 @@
+package Clases;
+
+public class BuilderIntermedio extends BuilderPC{
+	private Presupuesto presupuesto;
+	
+	
+	
+	
+	public void setProcesador() {
+		this.presupuesto.setProcesador(super.getComponente("Procesador Intermedio"));
+	}
+	
+	public void setRam() {
+		this.presupuesto.setRam(super.getComponente("16 GB"));
+	}
+	
+	public void setDisco() {
+		this.presupuesto.setDisco(super.getComponente("SSD 500 GB"));
+	}
+	
+	public void setGrafica() {
+		this.presupuesto.setGrafica(super.getComponente("GTX 1650"));
+	}
+	
+	public void setGabinete() {
+		this.presupuesto.setGabinete(super.getComponente("Gabinete Estandar"));
+	}
+	
+	public Presupuesto getResultado() {
+		return this.presupuesto;
+	}
+	
+}

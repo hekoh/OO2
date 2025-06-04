@@ -1,0 +1,16 @@
+package Clases;
+
+public class DatabaseAccessProxy extends DatabaseAccess{
+	private DatabaseAccess db;
+	private boolean logedIn;
+	private String password;
+	
+	
+	public DatabaseAccessProxy(DatabaseAccess db, String pass) {
+		this.db = db;
+		this.logedIn = false;
+		this.password = pass;
+	}
+	
+	
+}

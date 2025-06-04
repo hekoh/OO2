@@ -1,0 +1,14 @@
+package Clases;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Mixta extends Prenda{
+	List<Prenda> prendas;
+	
+	
+	public Mixta() {
+		this.prendas = new ArrayList<Prenda>();
+	}
+	
+}

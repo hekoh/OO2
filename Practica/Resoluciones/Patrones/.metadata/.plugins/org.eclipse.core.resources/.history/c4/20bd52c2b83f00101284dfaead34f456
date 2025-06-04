@@ -1,0 +1,8 @@
+package Clases;
+
+public interface Component {
+	
+	
+	public String prettyPrint();
+	
+}

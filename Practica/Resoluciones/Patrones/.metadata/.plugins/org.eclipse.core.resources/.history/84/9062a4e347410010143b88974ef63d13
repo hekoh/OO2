@@ -1,0 +1,22 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+public class TestPersonajes {
+	Juego director;
+	Personaje pj1;
+	Personaje pj2;
+	
+	
+	@BeforeEach
+	public void setup() {
+		director = new Juego(new BuilderGuerrero());
+		pj1 = director.buildPersonaje("Varian");
+		director.setBuilder(new BuilderArquero());
+		pj2 = director.buildPersonaje("Sylvanas");
+	}
+}

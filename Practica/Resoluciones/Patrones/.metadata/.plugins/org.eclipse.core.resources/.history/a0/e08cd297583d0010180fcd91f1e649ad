@@ -1,0 +1,17 @@
+package Clases;
+
+public abstract class BuilderPC {
+	
+	
+	public abstract void setProcesador();
+	
+	public abstract void setRam();
+	
+	public abstract void setDisco();
+	
+	public abstract void setGrafica();
+	
+	public abstract void setGabinete();
+	
+	
+}

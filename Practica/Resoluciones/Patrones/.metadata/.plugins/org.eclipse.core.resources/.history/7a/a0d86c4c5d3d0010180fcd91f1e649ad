@@ -1,0 +1,28 @@
+package Clases;
+
+public abstract class BuilderPC {
+	private Catalogo catalogo;
+	
+	
+	public void agregarCatalogo(Catalogo cat) {
+		this.catalogo = cat;
+	}
+	
+	
+	
+	public abstract void setProcesador();
+	
+	public abstract void setRam();
+	
+	public abstract void setDisco();
+	
+	public abstract void setGrafica();
+	
+	public abstract void setGabinete();
+	
+	public abstract Presupuesto getResultado();
+	
+	protected Componente getComponente(String descripcion) {
+		return this.catalogo.getComponente(descripcion);
+	}
+}

@@ -1,0 +1,13 @@
+package Clases;
+
+public class BuilderBasico extends BuilderPC{
+	private Presupuesto presupuesto;
+	
+	
+	
+	
+	public void setProcesador() {
+		this.presupuesto.setProcesador(super.getComponente("Procesador Basico"));
+	}
+	
+}

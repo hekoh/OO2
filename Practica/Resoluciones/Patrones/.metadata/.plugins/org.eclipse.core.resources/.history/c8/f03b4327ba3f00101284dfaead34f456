@@ -1,0 +1,10 @@
+package Clases;
+
+public class DecoratorExtension extends FileDecorator{
+
+	
+	public DecoratorExtension(Component comp) {
+		super(comp);
+	}
+	
+}

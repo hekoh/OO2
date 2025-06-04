@@ -1,0 +1,32 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.time.LocalDate;
+
+public class TestPrendas {
+	private Mixta mixta;
+	
+	
+	
+	@BeforeEach
+	public void setup() {
+		mixta = new Mixta();
+		Inmueble in = new Inmueble("ejemplo 123",23,675.0);
+		Automovil auto = new Automovil(LocalDate.now().minusYears(2),5000,20000.0);
+		Alquiler alq = new Alquiler(LocalDate.now().minusDays(31),LocalDate.now().plusDays(100),1500.0);
+		mixta.agregarPrenda(alq);
+		mixta.agregarPrenda(auto);
+		mixta.agregarPrenda(in);
+	}
+	
+	@Test
+	public void testValor() {
+		assertEquals(mixta.Valor(),36025.0);
+	}
+	
+}

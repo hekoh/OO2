@@ -1,0 +1,18 @@
+package Clases;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Catalogo {
+	private List<Componente> componentes;
+	
+	
+	public Catalogo() {
+		this.componentes = new ArrayList<Componente>();
+	}
+	
+	public void agregarComponente(Componente comp) {
+		this.componentes.add(comp);
+	}
+	
+}

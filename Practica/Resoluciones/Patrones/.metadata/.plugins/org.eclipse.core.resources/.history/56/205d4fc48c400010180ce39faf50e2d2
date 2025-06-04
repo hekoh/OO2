@@ -1,0 +1,9 @@
+package Clases;
+
+public class Personaje {
+	private String nombre;
+	private int vida;
+	private Arma arma;
+	private Armadura armadura;
+	private String habilidad;
+}

@@ -1,0 +1,20 @@
+package Clases;
+
+public class Automovil extends Prenda{
+	private String modelo;
+	private double kilometraje;
+	private double costo0km;
+	
+	
+	
+	public Automovil(String modelo, double km, double costo) {
+		this.modelo = modelo;
+		this.kilometraje = km;
+		this.costo0km = costo;
+	}
+	
+	public double Liquidez() {
+		
+	}
+	
+}

@@ -1,0 +1,25 @@
+package Clases;
+
+import java.util.Collection;
+
+public class DatabaseAccessProxy extends DatabaseAccess{
+	private DatabaseAccess db;
+	private boolean logedIn;
+	private String password;
+	
+	
+	public DatabaseAccessProxy(DatabaseAccess db, String pass) {
+		this.db = db;
+		this.logedIn = false;
+		this.password = pass;
+	}
+	
+	
+	public Collection<String> getSearchResults(String queryString){
+		if(!this.logedIn) {
+			return this.db.getSearchResults(queryString);
+		}
+	}
+
+	
+}

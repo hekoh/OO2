@@ -1,0 +1,67 @@
+package Clases;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Personaje {
+	private String nombre;
+	private int vida;
+	private Arma arma;
+	private Armadura armadura;
+	private List<String> habilidades;
+	
+	
+	
+	public Personaje(String nombre, Arma arma, Armadura armadura) {
+		this.nombre = nombre;
+		this.arma = arma;
+		this.armadura = armadura;
+		this.habilidades = new ArrayList<String>();
+		this.vida = 100;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public void setArma(Arma arma) {
+		this.arma = arma;
+	}
+
+
+	public void setArmadura(Armadura armadura) {
+		this.armadura = armadura;
+	}
+
+
+	public void setHabilidad(String habilidad) {
+		this.habilidades.add(habilidad);
+	}
+	
+	
+	public boolean isAlive() {
+		return vida > 0;
+	}
+	
+	public Arma getArma() {
+		return this.arma;
+	}
+	
+	
+	public void Combatir(Personaje enemigo) {
+		recibirDaño(enemigo.getArma);
+	}
+	
+	public void recibirDaño(Arma arma) {
+		this.vida -= this.armadura.RecibirDaño(arma);
+	}
+	
+	
+	
+	
+	
+	
+	
+}

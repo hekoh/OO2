@@ -1,0 +1,10 @@
+package Clases;
+
+public class Baston implements Arma{
+	
+	
+	public int DañoContraCuero() {
+		return 2;
+	}
+	
+}

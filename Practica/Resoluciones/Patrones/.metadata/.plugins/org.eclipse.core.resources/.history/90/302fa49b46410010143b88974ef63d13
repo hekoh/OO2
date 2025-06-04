@@ -1,0 +1,18 @@
+package Clases;
+
+public class Martillo implements Arma {
+	
+	
+	public int DañoContraCuero() {
+		return 7;
+	}
+	
+	public int DañoContraHierro() {
+		return 6;
+	}
+	
+	public int DañoContraAcero() {
+		return 4;
+	}
+	
+}

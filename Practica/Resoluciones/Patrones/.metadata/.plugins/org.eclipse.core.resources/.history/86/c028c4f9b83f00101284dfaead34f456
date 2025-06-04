@@ -1,0 +1,35 @@
+package Clases;
+
+import java.time.LocalDate;
+
+public class FileOO2 {
+	private String nombre;
+	private String extension;
+	private double tamaño;	//kb
+	private LocalDate creacion;
+	private LocalDate modificacion;
+	
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public String getExtension() {
+		return extension;
+	}
+	public double getTamaño() {
+		return tamaño;
+	}
+	public LocalDate getCreacion() {
+		return creacion;
+	}
+	public LocalDate getModificacion() {
+		return modificacion;
+	}
+	
+	
+	
+	
+	
+}

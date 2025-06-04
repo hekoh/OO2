@@ -1,0 +1,28 @@
+package Clases;
+
+public class BuilderThor extends BuilderPersonaje{
+	private Personaje pj;
+	
+	
+	public void setArma() {
+		pj.setArma(new Martillo());
+	}
+	
+	public void setArmadura() {
+		pj.setArmadura(new Hierro());
+	}
+	
+	public void setHabilidad() {
+		pj.setHabilidad("Combate a distancia");
+		pj.setHabilidad("Lanzamiento de rayos");
+	}
+	
+	public void setNombre(String nombre) {
+		pj.setNombre(nombre);
+	}
+	
+	public Personaje getResultado() {
+		return pj;
+	}
+	
+}

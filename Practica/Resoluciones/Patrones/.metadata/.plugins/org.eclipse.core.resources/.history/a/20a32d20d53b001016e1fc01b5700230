@@ -1,0 +1,23 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.time.LocalDate;
+
+public class TestPrendas {
+	private Mixta mixta;
+	
+	
+	
+	@BeforeEach
+	public void setup() {
+		mixta = new mixta();
+		Inmueble in = new Inmueble("ejemplo 123",23,675.0);
+		Automovil auto = new Automovil();
+	}
+	
+}

@@ -1,0 +1,88 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestWeather {
+	private HomeWeatherStation home;
+	private WeatherAdapter adapter;
+	
+	
+	
+	@BeforeEach
+	public void setup() {
+		List<Double> temps = new ArrayList<Double>();
+		temps.add(58.0);
+		temps.add(67.0);
+		temps.add(80.0);
+		home = new HomeWeatherStation(80.0,8.0,2.2,temps);
+		adapter = new WeatherAdapter(home);
+	}
+	
+	
+	@Test
+	public void testCelcius() {
+		assertEquals(adapter.getTemperaturas().get(0),58.0);
+		assertEquals(adapter.getTemperatura(),80.0);
+		adapter.toogleCelcius();
+		assertEquals(adapter.getTemperatura(),27.00);
+		assertEquals(adapter.getTemperaturas().get(0),14.00);
+		assertEquals(adapter.getTemperaturas().get(2),27.00);
+	}
+	
+	@Test
+	public void testMaximo() {
+		WeatherDecorator aux = new MaxDecorator(adapter);
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Maximo: " + 80.00);
+		adapter.toogleCelcius();
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Maximo: " + 27.00);
+	}
+	
+	@Test
+	public void testMinimo() {
+		WeatherDecorator aux = new MinDecorator(adapter);
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Minimo: " + 58.00);
+		adapter.toogleCelcius();
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Minimo: " + 14.00);
+	}
+	
+	@Test
+	public void testPromedio() {
+		WeatherDecorator aux = new PromedioDecorator(adapter);
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Promedio: " + 68.00);
+		adapter.toogleCelcius();
+		assertEquals(aux.displayData(),"Temperatura F: " + aux.getTemperatura() +
+				" Presión atmosf: " + aux.getPresion() +
+				" Radiación solar: " + aux.getRadiacionSolar() + " Promedio: " + 14.00);
+	}
+	
+	@Test
+	public void testDecorators() {
+		WeatherDecorator max = new MaxDecorator(adapter);
+		WeatherDecorator min = new MinDecorator(max);
+		WeatherDecorator prom = new PromedioDecorator(min);
+		assertEquals(max.displayData(),"Temperatura F: " + max.getTemperatura() +
+				" Presión atmosf: " + max.getPresion() +
+				" Radiación solar: " + max.getRadiacionSolar() + " maximo: " + 80.00 + 
+				" Minimo: " + 58.00 + " Promedio: " + 58.00);
+	}
+	
+	
+	
+}

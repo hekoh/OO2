@@ -1,0 +1,30 @@
+package Clases;
+
+import java.util.List;
+
+public class WeatherAdapter implements WeatherData{
+	private HomeWeatherStation data;
+	private boolean celcius;
+	
+	
+	
+	
+	public double getTemperatura() {
+		return data.getTemperatura();
+	}
+
+
+	public double getPresion() {
+		return data.getPresion();
+	}
+
+
+	public double getRadiacionSolar() {
+		return data.getRadiacionSolar();
+	}
+
+
+	public List<Double> getTemperaturas() {
+		return data.getTemperaturas();
+	}
+}

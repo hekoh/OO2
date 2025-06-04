@@ -1,0 +1,21 @@
+package Clases;
+
+public class BuilderBasico extends BuilderPC{
+	private Presupuesto presupuesto;
+	
+	
+	
+	
+	public void setProcesador() {
+		this.presupuesto.setProcesador(super.getComponente("Procesador Basico"));
+	}
+	
+	public void setRam() {
+		this.presupuesto.setRam(super.getComponente("8 GB"));
+	}
+	
+	public void setDisco() {
+		this.presupuesto.setDisco(super.getComponente("HDD 500 GB"));
+	}
+	
+}

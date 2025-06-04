@@ -1,0 +1,12 @@
+package Clases;
+
+public class Inmueble extends Prenda{
+	private String direccion;
+	private double superficie;
+	private double costoM;
+	
+	
+	
+	
+	
+}

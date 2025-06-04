@@ -1,0 +1,19 @@
+package Clases;
+
+public class PromedioDecorator extends WeatherDecorator{
+	
+	
+	public PromedioDecorator(WeatherData data) {
+		super(data);
+	}
+	
+	
+	private double maximo() {
+		return super.getTemperaturas().stream().
+				max((T1,T2) -> T1.compareTo(T2)).orElse(0.0);
+	}
+	
+	public String displayData() {
+		return super.displayData() + " Maximo: " + this.maximo();
+	}
+}

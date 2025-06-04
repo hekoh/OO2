@@ -1,0 +1,15 @@
+package Clases;
+
+public class BuilderArquero extends BuilderPersonaje{
+	private Personaje pj;
+	
+	
+	public void setArma() {
+		pj.setArma(new Arco());
+	}
+	
+	public void setArmadura() {
+		pj.setArmadura(new Cuero());
+	}
+	
+}

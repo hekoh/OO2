@@ -1,0 +1,9 @@
+package Clases;
+
+public interface Component {
+	
+	public String prettyPrint();
+	public String getNombre();
+	public String getExtension();
+	public LocalDate getCreacion();
+}

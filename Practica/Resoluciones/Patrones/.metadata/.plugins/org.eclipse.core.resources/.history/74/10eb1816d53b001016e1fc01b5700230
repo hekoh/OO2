@@ -1,0 +1,33 @@
+package Clases;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Mixta extends Prenda{
+	List<Prenda> prendas;
+	
+	
+	public Mixta() {
+		this.prendas = new ArrayList<Prenda>();
+	}
+	
+	public void agregarPrenda(Prenda prenda) {
+		this.prendas.add(prenda);
+	}
+	
+	
+	
+	
+	public double Valor() {
+		return this.prendas.stream().mapToDouble(p -> p.Valor()).sum();
+	}
+	
+	public double Liquidez() {
+		return 0.5;
+	}
+	
+	public double valorPrendario() {
+		return Valor() * Liquidez();
+	}
+	
+}

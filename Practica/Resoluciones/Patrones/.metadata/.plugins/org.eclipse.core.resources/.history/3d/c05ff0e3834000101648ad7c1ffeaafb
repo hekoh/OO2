@@ -1,0 +1,40 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestWeather {
+	private HomeWeatherStation home;
+	private WeatherAdapter adapter;
+	
+	
+	
+	@BeforeEach
+	public void setup() {
+		List<Double> temps = new ArrayList<Double>();
+		temps.add(58.2);
+		temps.add(80.0);
+		home = new HomeWeatherStation(80.0,8.0,2.2,temps);
+		adapter = new WeatherAdapter(home);
+	}
+	
+	
+	@Test
+	public void testCelcius() {
+		assertEquals(adapter.getTemperaturas().get(0),58.2);
+		assertEquals(adapter.getTemperatura(),80.0);
+		adapter.toogleCelcius();
+		assertEquals(String.format("%.2f", adapter.getTemperatura()),"26,67");
+		assertEquals(String.format("%.2f", adapter.getTemperaturas().get(0)),"14,56");
+		assertEquals(String.format("%.2f", adapter.getTemperaturas().get(1)),"26,67");
+	}
+	
+	
+	
+}

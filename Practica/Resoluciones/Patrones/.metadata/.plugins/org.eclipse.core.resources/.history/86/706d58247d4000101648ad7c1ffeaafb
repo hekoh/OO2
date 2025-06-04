@@ -1,0 +1,12 @@
+package Clases;
+
+import java.util.List;
+
+public class HomeWeatherStation {
+	private double temperatura;
+	private double presion;
+	private double radiacion;
+	private List<Double> temperaturas;
+	
+	
+}

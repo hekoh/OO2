@@ -1,0 +1,16 @@
+package Clases;
+
+public class MaxDecorator extends WeatherDecorator{
+	
+	
+	
+	private double maximo() {
+		return super.getTemperaturas().stream().
+				max((T1,T2) -> T1.compareTo(T2)).orElse(null);
+	}
+	
+	public String displayData() {
+		return super.displayData() + 
+	}
+	
+}

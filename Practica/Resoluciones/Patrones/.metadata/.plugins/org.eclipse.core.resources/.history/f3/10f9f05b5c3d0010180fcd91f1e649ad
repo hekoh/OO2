@@ -1,0 +1,44 @@
+package Test;
+
+import Clases.*;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
+import java.time.LocalDate;
+
+
+public class TestCatalogo {
+	private Catalogo catalogo;
+	private Componente comp1;
+	private BuilderPC builder;
+	
+	
+	@BeforeEach
+	public void setup() {
+		this.catalogo = new Catalogo();
+		this.comp1 = new Componente("HDD 500 GB", "Disco Basico, HDD 500 GB", 600.0, 30.0);
+		this.catalogo.agregarComponente(comp1);
+		this.catalogo.agregarComponente(new Componente("SSD 500 GB", "SSD 500 GB", 900.0, 35.0));
+		this.catalogo.agregarComponente(new Componente("NVIDIA RTX 4090", "RTX 4090", 3500.0, 450.0));
+		this.catalogo.agregarComponente(new Componente("SSD 1 TB", "SSD 1 TB", 900.0, 40.0));
+		this.catalogo.agregarComponente(new Componente("RAM 32 GB", "RAM 32 GB DDR5", 700.0, 15.0));
+		this.catalogo.agregarComponente(new Componente("Ryzen 9 9950X", "Ryzen 9 9950X 5.7GHZ", 2500.0, 180.0));
+		this.catalogo.agregarComponente(new Componente("Cooler CoolerMaster", "Cooler basico", 150.0, 5.0));
+	}
+	
+	
+	@Test
+	public void testGetComponente() {
+		assertEquals(this.catalogo.getComponente("500 GB"),comp1); //devuelve el primero
+		assertEquals(this.catalogo.getComponente("Disco Basico"),comp1);
+	}
+	
+	@Test
+	public void testBuilderGamer() {
+		this.builder = new BuilderGamer();
+		this.builder.setGabinete();
+	}
+	
+}

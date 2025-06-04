@@ -1,0 +1,34 @@
+package Clases;
+
+public class BuilderGamer extends BuilderPC{
+	private Presupuesto presupuesto;
+	
+	
+	public void setProcesador() {
+		this.presupuesto.setProcesador(super.getComponente("Procesador Gamer"));
+		this.presupuesto.setProcesador(super.getComponente("Pad termico"));
+	}
+	
+	public void setRam() {
+		this.presupuesto.setRam(super.getComponente("32 GB"));
+		this.presupuesto.setRam(super.getComponente("32 GB"));
+	}
+	
+	public void setDisco() {
+		this.presupuesto.setDisco(super.getComponente("SSD 500 GB"));
+		this.presupuesto.setDisco(super.getComponente("SSD 1 TB"));
+	}
+	
+	public void setGrafica() {
+		this.presupuesto.setGrafica(super.getComponente("RTX 4090"));
+	}
+	
+	public void setGabinete() {
+		this.presupuesto.setGabinete(super.getComponente("Gabinete Gamer"));
+	}
+	
+	public Presupuesto getResultado() {
+		return this.presupuesto;
+	}
+	
+}
