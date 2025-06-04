@@ -1,0 +1,13 @@
+package Clases;
+
+public abstract class BuilderPersonaje {
+	
+	
+	public abstract void setArma();
+	public abstract void setArmadura();
+	public abstract void setHabilidad();
+	public abstract Personaje getResultado();
+	public abstract void setNombre(String nombre);
+	
+	
+}

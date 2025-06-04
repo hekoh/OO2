@@ -1,0 +1,9 @@
+package Clases;
+
+public interface Arma {
+	
+	
+	public int DañoContraCuero();
+	public int DañoContraAcero();
+	public int DañoContraHierro();
+}
